@@ -96,27 +96,6 @@ hctreemap(treemap1, allowDrillToNode = TRUE) %>%
   hc_exporting(enabled = TRUE)
 ```
 
-
-```{r treemap, fig.keep='none', out.width = '70%'}
-treemap1 <- treemap(a, #Your data frame object
-        index=c("Exportador"),  #A list of your categorical variables
-        vSize = "ValordaOperacaoemUM",  #This is your quantitative variable
-        type="index", #Type sets the organization and color scheme of your treemap
-        palette = "Spectral",  #Select your color palette from the RColorBrewer presets or make your own.
-        title="Valores dos Empréstimos", #Customize your title
-        fontsize.title = 14 #Change the font size of the title
-)
-```
-
-```{r treemap int}
-hctreemap(treemap1, allowDrillToNode = TRUE) %>% 
-  hc_title(text = "Figura 2: Proporção do total emprestado para cada empresa") %>% 
-    hc_tooltip(pointFormat = "<b>{point.name}</b>:<br>
-                              Total Recebido: {point.value:,.0f}") %>% 
-  hc_exporting(enabled = TRUE)
-```
-
-
 No segundo gráfico temos os valores referentes ao cruzamento entre as variáveis intenção de voto e avaliação do governo. Para a criação do banco para esta análise foram retirados as observações onde o indivíduo não sabia ou não responde sobre a avaliação do governo, como pode ser visto no código abaixo. Em seguida foram criadas duas variáveis, uma representando as opiniões positivas e a outras as opiniões negativas.
 
 ```R
