@@ -38,11 +38,6 @@ dados$esc2 = gsub("superior", "Sup.", dados$esc2 )
 dados$esc2 = gsub("Sem instrução e menos de 1 ano de estudo", "Sem instr. e menos de 1 ano de estudo", dados$esc2 )
 dados$esc2 = firstup(dados$esc2)
 dados$count = 1
-
-#dados para a figura 2
-dados2 = dados[-which(dados$aval_gov == "NS/NR"),]
-dados2$aval_gov2 = ifelse((dados2$aval_gov == "Boa") | (dados2$aval_gov == "Ótima ") | 
-                            (dados2$aval_gov == "Regular positiva"), "Positiva",  "Negativa") 
 ```
 
 
@@ -102,7 +97,35 @@ hctreemap(treemap1, allowDrillToNode = TRUE) %>%
 ```
 
 
+No segundo gráfico temos os valores referentes ao cruzamento entre as variáveis intenção de voto e avaliação do governo. Para a criação do banco para esta análise foram retirados as observações onde o indivíduo não sabia ou não responde sobre a avaliação do governo, como pode ser visto no código abaixo. Em seguida foram criadas duas variáveis, uma representando as opiniões positivas e a outras as opiniões negativas.
 
+```R
+#dados para a figura 2
+dados2 = dados[-which(dados$aval_gov == "NS/NR"),]
+dados2$aval_gov2 = ifelse((dados2$aval_gov == "Boa") | (dados2$aval_gov == "Ótima ") | 
+                            (dados2$aval_gov == "Regular positiva"), "Positiva",  "Negativa") 
+                            
+dados_fig2 = aggregate(count ~ aval_gov2 + voto1, data = dados2, FUN = sum)
+
+fig2 = ggplot(dados_fig2) +
+  geom_bar( aes(y = count, x =voto1, fill = aval_gov2), position = "fill", alpha = .8,color="transparent", stat = "identity")+
+  ylab("Proporção das intenções de votos") +xlab("Candidatos") + 
+  scale_y_continuous(labels = scales::percent) +
+  coord_cartesian(  expand = FALSE) +
+  scale_fill_manual("Avaliação do Governo",c("Negativa", "Positiva"), values = c("#f94144", "#277da1" ))+
+  theme_classic(base_size = 15) +
+  geom_hline(yintercept=.5, linetype="dashed", 
+             color = "grey", size=1) +
+  theme(axis.text.x=element_text(angle = 90, hjust = 1),
+        axis.text.y.right = element_text(color = "black"),
+        panel.background = element_blank()) ; fig2
+
+ggsave("fig2.png",fig2, width=4, height=2.5, units="in", scale=3)
+```
+Figura 2: Intenção de voto X Avaliação do Governo
+<img src="fig2.png" alt="hi" class="inline"/>
+
+Na Figura 2, pode-se observar que mais da metade dos indivíduos que possuem intenção de votar no Candidato 7 fez uma avaliação de forma negativa do governo. O mesmo ocorreu para os indivíduos que planejam votar nos candidatos 8, 11 e 13. Vale ressaltar que dos indivíduos com intenção de voto para os candidatos 12 e 14, metade fez uma avaliação positiva do governo e a outra metade negativa.
 
 
 
