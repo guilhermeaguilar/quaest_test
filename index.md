@@ -58,10 +58,10 @@ tabela_cont = function(variavel){
   return(n)
 }
 
+#exemplos de aplicações: tabela_cont('idade2'); tabela_cont('renda2'); tabela_cont('esc2'); tabela_cont('aval_gov2')
 tabela_cont('sexo')
                      
- # 
-# Feminino     Masculino   
+#                     Feminino     Masculino   
 # Candidato 01        11 (2.02%)   31 (6.81%)  
 # Candidato 02        295 (54.13%) 228 (50.11%)
 # Candidato 03        9 (1.65%)    7 (1.54%)   
@@ -81,7 +81,25 @@ tabela_cont('sexo')
 # Sum                 545 (100%)   455 (100%)  
 ```
 
+### Gráfico da Intenção de voto
+Nesta seção será apresentado o gráfico que contém o total da intenção de votos para cada candidato. 
+```R
+dados_fig1 = aggregate(count ~ voto1, data = dados, FUN = sum)
 
+treemap1 <- treemap(dados_fig1, 
+                    index=c("voto1"),  
+                    vSize = "count",  
+                    type="index", 
+                    palette = "Spectral",  
+                    title="Intenção de votos", 
+                    fontsize.title = 14 
+)
+hctreemap(treemap1, allowDrillToNode = TRUE) %>% 
+  hc_title(text = "Intenção de votos") %>% 
+  hc_tooltip(pointFormat = "<b>{point.name}</b>:<br>
+                              Total Recebido: {point.value:,.0f}") %>% 
+  hc_exporting(enabled = TRUE)
+```
 
 
 
