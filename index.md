@@ -46,7 +46,7 @@ dados2$aval_gov2 = ifelse((dados2$aval_gov == "Boa") | (dados2$aval_gov == "Óti
 ```
 
 
-Dando continuidade, uma nova função foi criada, onde nela é inserida a variável que será comparada em relação a intenção de voto, por exemplo, se desejo saber a intenção de votos de acordo com a idade, insiro a variável "idade" na função `tabela_cont()`.
+Dando continuidade, uma nova função foi criada, onde nela é inserida a variável que será comparada em relação a intenção de voto, por exemplo, se desejo saber a intenção de votos de acordo com a idade, insiro a variável "idade" na função `tabela_cont()`, como saída, obtenho o número total de intenção de votos para cada candidato e também a procentagem dentro e cada grupo, como pode ser visto abaixo.
 ```R
 tabela_cont = function(variavel){
   n = addmargins(table(dados$voto1,  dados[,variavel]),1)
@@ -60,24 +60,25 @@ tabela_cont = function(variavel){
 
 tabela_cont('sexo')
                      
-                      Feminino     Masculino   
-  Candidato 01        11 (2.02%)   31 (6.81%)  
-  Candidato 02        295 (54.13%) 228 (50.11%)
-  Candidato 03        9 (1.65%)    7 (1.54%)   
-  Candidato 04        4 (0.73%)    8 (1.76%)   
-  Candidato 05        14 (2.57%)   11 (2.42%)  
-  Candidato 06        7 (1.28%)    3 (0.66%)   
-  Candidato 07        3 (0.55%)    4 (0.88%)   
-  Candidato 08        14 (2.57%)   12 (2.64%)  
-  Candidato 09        7 (1.28%)    12 (2.64%)  
-  Candidato 10        14 (2.57%)   6 (1.32%)   
-  Candidato 11        1 (0.18%)    2 (0.44%)   
-  Candidato 12        3 (0.55%)    3 (0.66%)   
-  Candidato 13        2 (0.37%)    1 (0.22%)   
-  Candidato 14        6 (1.1%)     0 (0%)      
-  Ninguém/Branco/Nulo 72 (13.21%)  70 (15.38%) 
-  NS/NR               83 (15.23%)  57 (12.53%) 
-  Sum                 545 (100%)   455 (100%)  
+ # 
+# Feminino     Masculino   
+# Candidato 01        11 (2.02%)   31 (6.81%)  
+# Candidato 02        295 (54.13%) 228 (50.11%)
+# Candidato 03        9 (1.65%)    7 (1.54%)   
+# Candidato 04        4 (0.73%)    8 (1.76%)   
+# Candidato 05        14 (2.57%)   11 (2.42%)  
+# Candidato 06        7 (1.28%)    3 (0.66%)   
+# Candidato 07        3 (0.55%)    4 (0.88%)   
+# Candidato 08        14 (2.57%)   12 (2.64%)  
+# Candidato 09        7 (1.28%)    12 (2.64%)  
+# Candidato 10        14 (2.57%)   6 (1.32%)   
+# Candidato 11        1 (0.18%)    2 (0.44%)   
+# Candidato 12        3 (0.55%)    3 (0.66%)   
+# Candidato 13        2 (0.37%)    1 (0.22%)   
+# Candidato 14        6 (1.1%)     0 (0%)      
+# Ninguém/Branco/Nulo 72 (13.21%)  70 (15.38%) 
+# NS/NR               83 (15.23%)  57 (12.53%) 
+# Sum                 545 (100%)   455 (100%)  
 ```
 
 
