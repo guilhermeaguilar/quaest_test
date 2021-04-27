@@ -97,6 +97,26 @@ hctreemap(treemap1, allowDrillToNode = TRUE) %>%
 ```
 
 
+```{r treemap, fig.keep='none', out.width = '70%'}
+treemap1 <- treemap(a, #Your data frame object
+        index=c("Exportador"),  #A list of your categorical variables
+        vSize = "ValordaOperacaoemUM",  #This is your quantitative variable
+        type="index", #Type sets the organization and color scheme of your treemap
+        palette = "Spectral",  #Select your color palette from the RColorBrewer presets or make your own.
+        title="Valores dos Empréstimos", #Customize your title
+        fontsize.title = 14 #Change the font size of the title
+)
+```
+
+```{r treemap int}
+hctreemap(treemap1, allowDrillToNode = TRUE) %>% 
+  hc_title(text = "Figura 2: Proporção do total emprestado para cada empresa") %>% 
+    hc_tooltip(pointFormat = "<b>{point.name}</b>:<br>
+                              Total Recebido: {point.value:,.0f}") %>% 
+  hc_exporting(enabled = TRUE)
+```
+
+
 No segundo gráfico temos os valores referentes ao cruzamento entre as variáveis intenção de voto e avaliação do governo. Para a criação do banco para esta análise foram retirados as observações onde o indivíduo não sabia ou não responde sobre a avaliação do governo, como pode ser visto no código abaixo. Em seguida foram criadas duas variáveis, uma representando as opiniões positivas e a outras as opiniões negativas.
 
 ```R
@@ -127,56 +147,3 @@ Figura 2: Intenção de voto X Avaliação do Governo
 
 Na Figura 2, pode-se observar que mais da metade dos indivíduos que possuem intenção de votar no Candidato 7 fez uma avaliação de forma negativa do governo. O mesmo ocorreu para os indivíduos que planejam votar nos candidatos 8, 11 e 13. Vale ressaltar que dos indivíduos com intenção de voto para os candidatos 12 e 14, metade fez uma avaliação positiva do governo e a outra metade negativa.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-You can use the [editor on GitHub](https://github.com/guilhermeaguilar/quaest_test/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-testes 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/guilhermeaguilar/quaest_test/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
