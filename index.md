@@ -1,6 +1,6 @@
 ## Avaliação técnica Quaest Pesquisa e Consultoria (Data Scientist)
 
-Os primeiros passos realizados nesta análise foram alguns ajustes feitos no banco de dados. A linguagem utilizada foi o `R`. Segue abaixo os passos.
+Os primeiros passos realizados nesta análise foram alguns ajustes no banco de dados. A linguagem de programação utilizada foi o `R`. Segue abaixo estes priemiros pasoss, onde foram criadas algumas variáveis, e também alterado o nome de algumas para melhorar a visualização das tabelas.
 ```R
 #pacotes utilizados
 library(ggplot2)
@@ -41,7 +41,7 @@ dados$count = 1
 ```
 
 
-Dando continuidade, uma nova função foi criada, onde nela é inserida a variável que será comparada em relação a intenção de voto, por exemplo, se desejo saber a intenção de votos de acordo com a idade, insiro a variável "idade" na função `tabela_cont()`, como saída, obtenho o número total de intenção de votos para cada candidato e também a procentagem dentro e cada grupo, como pode ser visto abaixo.
+Dando continuidade, uma nova função foi criada, onde nela é inserida a variável que será comparada com relação a intenção de voto. Por exemplo, se desejo saber as intenções de votos de acordo com a idade, insiro a variável "idade" na função `tabela_cont()`, como saída obtenho o número total de intenções de votos para cada candidato e também a porcentagem dentro de cada grupo, como pode ser visto abaixo.
 ```R
 tabela_cont = function(variavel){
   n = addmargins(table(dados$voto1,  dados[,variavel]),1)
@@ -77,7 +77,7 @@ tabela_cont('sexo')
 ```
 
 ### Gráfico da Intenção de voto
-Nesta seção será apresentado o gráfico que contém o total da intenção de votos para cada candidato. 
+Nesta seção será apresentado o gráfico que contém o total das intenções de votos para cada candidato. 
 ```R
 dados_fig1 = aggregate(count ~ voto1, data = dados, FUN = sum)
 
@@ -111,13 +111,13 @@ hctreemap(treemap1, allowDrillToNode = TRUE) %>%
 ggsave("fig1.png",fig1, width=4, height=2.5, units="in", scale=3)
 ```
 
-Figura 1: Intenção de voto para cada candidato
+Figura 1: Intenções de votos para cada candidato
 <img src="fig1.png" alt="hi" class="inline"/>
 
 A Figura 1 apresenta os candidatos que possuem as maiores intenções de votos. Além deste gráfico apresentado, a mesma informação pode ser vista de uma forma mais interativa no gráfico presente em: https://rstudio-pubs-static.s3.amazonaws.com/761497_2be5b28bcb2a45a28aac7b0e99cb9b07.html
 
-### Gráfico da Intenção de voto e avaliação do governo
-No segundo gráfico temos os valores referentes ao cruzamento entre as variáveis intenção de voto e avaliação do governo. Para a criação do banco para esta análise foram retirados as observações onde o indivíduo não sabia ou não responde sobre a avaliação do governo, como pode ser visto no código abaixo. Em seguida foram criadas duas variáveis, uma representando as opiniões positivas e a outras as opiniões negativas.
+### Gráfico das intenções de votos e avaliação do governo
+No segundo gráfico temos os valores referentes ao cruzamento entre as variáveis intenção de voto e avaliação do governo. Para a criação do banco para esta análise foram retiradas as observações onde o indivíduo não sabia ou não respondeu a avaliação do governo, como pode ser visto no código abaixo. Em seguida foram criadas duas variáveis, uma representando todas as opiniões positivas e a outras as opiniões negativas.
 
 ```R
 #dados para a figura 2
@@ -145,5 +145,5 @@ ggsave("fig2.png",fig2, width=4, height=2.5, units="in", scale=3)
 Figura 2: Intenção de voto X Avaliação do Governo
 <img src="fig2.png" alt="hi" class="inline"/>
 
-Na Figura 2, pode-se observar que mais da metade dos indivíduos que possuem intenção de votar no Candidato 7 fez uma avaliação de forma negativa do governo. O mesmo ocorreu para os indivíduos que planejam votar nos candidatos 8, 11 e 13. Vale ressaltar que dos indivíduos com intenção de voto para os candidatos 12 e 14, metade fez uma avaliação positiva do governo e a outra metade negativa.
+Na Figura 2 pode-se observar que mais da metade dos indivíduos que possuem intenção de votar no Candidato 7 fez uma avaliação de forma negativa do governo. O mesmo ocorreu para os indivíduos que planejam votar nos candidatos 8, 11 e 13. Vale ressaltar que metade dos indivíduos com intenção de voto para os candidatos 12 e 14,  fez uma avaliação positiva do governo e a outra metade negativa.
 
