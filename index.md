@@ -95,7 +95,10 @@ hctreemap(treemap1, allowDrillToNode = TRUE) %>%
                               Total Recebido: {point.value:,.0f}") %>% 
   hc_exporting(enabled = TRUE)
 ```
-<img src="fig1.html" alt="hi" class="inline"/>
+
+Figura 1: Intenção de voto para cada candidato
+<iframe src="fig1.html" frameborder="0" height="400" width="430"></iframe>
+
 
 No segundo gráfico temos os valores referentes ao cruzamento entre as variáveis intenção de voto e avaliação do governo. Para a criação do banco para esta análise foram retirados as observações onde o indivíduo não sabia ou não responde sobre a avaliação do governo, como pode ser visto no código abaixo. Em seguida foram criadas duas variáveis, uma representando as opiniões positivas e a outras as opiniões negativas.
 
