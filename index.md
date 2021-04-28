@@ -147,3 +147,5 @@ Figura 2: Intenção de voto X Avaliação do Governo
 
 Na Figura 2 pode-se observar que mais da metade dos indivíduos que possuem intenção de votar no Candidato 7 fez uma avaliação de forma negativa do governo, o mesmo ocorreu para os indivíduos que planejam votar nos candidatos 8, 11 e 13. Vale ressaltar que metade dos indivíduos com intenção de voto para os candidatos 12 e 14,  fez uma avaliação positiva do governo e a outra metade negativa.
 
+### Conclusões
+O Candidato 2 possui o maior número de intenções de votos. Nas várias categorias testadas, como por exemplo o sexo, escolaridade, renda e idade, em todas elas o Candidato 2 possui mais intenções de votos. Quando se observa a categoria Avaliação do Governo, os indivíduos que não souberam avaliar, avaliaram como péssimo, regular negativa ou ruim, não possuem intenção de votar no Candidato 2 em sua maioria.
