@@ -1,6 +1,6 @@
 ## Avaliação técnica Quaest Pesquisa e Consultoria (Data Scientist)
 
-Os primeiros passos realizados nesta análise foram alguns ajustes no banco de dados. A linguagem de programação utilizada foi o `R`. Segue abaixo estes priemiros pasoss, onde foram criadas algumas variáveis, e também alterado o nome de algumas para melhorar a visualização das tabelas.
+Os primeiros passos realizados nesta análise foram alguns ajustes no banco de dados. A linguagem de programação utilizada foi o `R`. Seguem abaixo estes primeiros passos, onde foram criadas algumas variáveis, e também alterado o nome de algumas delas para melhorar a visualização das tabelas.
 ```R
 #pacotes utilizados
 library(ggplot2)
@@ -117,7 +117,7 @@ Figura 1: Intenções de votos para cada candidato
 A Figura 1 apresenta os candidatos que possuem as maiores intenções de votos. Além deste gráfico apresentado, a mesma informação pode ser vista de uma forma mais interativa no gráfico presente em: https://rstudio-pubs-static.s3.amazonaws.com/761497_2be5b28bcb2a45a28aac7b0e99cb9b07.html
 
 ### Gráfico das intenções de votos e avaliação do governo
-No segundo gráfico temos os valores referentes ao cruzamento entre as variáveis intenção de voto e avaliação do governo. Para a criação do banco para esta análise foram retiradas as observações onde o indivíduo não sabia ou não respondeu a avaliação do governo, como pode ser visto no código abaixo. Em seguida foram criadas duas variáveis, uma representando todas as opiniões positivas e a outras as opiniões negativas.
+No segundo gráfico temos os valores referentes ao cruzamento entre as variáveis intenção de voto e avaliação do governo. Para a criação do banco para esta análise foram retiradas as observações onde o indivíduo não sabia ou não respondeu a avaliação do governo, como pode ser visto no código abaixo. Em seguida foi criada uma variável que calssifica em duas categorias todas as opiniões positivas e as opiniões negativas.
 
 ```R
 #dados para a figura 2
@@ -145,5 +145,5 @@ ggsave("fig2.png",fig2, width=4, height=2.5, units="in", scale=3)
 Figura 2: Intenção de voto X Avaliação do Governo
 <img src="fig2.png" alt="hi" class="inline"/>
 
-Na Figura 2 pode-se observar que mais da metade dos indivíduos que possuem intenção de votar no Candidato 7 fez uma avaliação de forma negativa do governo. O mesmo ocorreu para os indivíduos que planejam votar nos candidatos 8, 11 e 13. Vale ressaltar que metade dos indivíduos com intenção de voto para os candidatos 12 e 14,  fez uma avaliação positiva do governo e a outra metade negativa.
+Na Figura 2 pode-se observar que mais da metade dos indivíduos que possuem intenção de votar no Candidato 7 fez uma avaliação de forma negativa do governo, o mesmo ocorreu para os indivíduos que planejam votar nos candidatos 8, 11 e 13. Vale ressaltar que metade dos indivíduos com intenção de voto para os candidatos 12 e 14,  fez uma avaliação positiva do governo e a outra metade negativa.
 
