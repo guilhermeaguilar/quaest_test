@@ -1,6 +1,6 @@
 ## Avaliação técnica Quaest Pesquisa e Consultoria (Data Scientist)
 
-Os primeiros passos realizados nesta análise foram alguns ajustes feitos no banco de dados. Segue abaixo estes passos.
+Os primeiros passos realizados nesta análise foram alguns ajustes feitos no banco de dados. A linguagem utilizada foi o `R`. Segue abaixo os passos.
 ```R
 #pacotes utilizados
 library(ggplot2)
@@ -93,13 +93,30 @@ hctreemap(treemap1, allowDrillToNode = TRUE) %>%
   hc_title(text = "Intenção de votos") %>% 
   hc_tooltip(pointFormat = "<b>{point.name}</b>:<br>
                               Total Recebido: {point.value:,.0f}") %>% 
-  hc_exporting(enabled = TRUE)
+  hc_exporting(enabled = TRUE) #este gráfico está presente no link abaixo
+  
+  fig1 = ggplot(dados_fig1) +
+  geom_bar( aes(y = reorder(voto1, -count), x = count), fill = "#47B39C", alpha = .9,color="transparent", stat = "identity")+
+  geom_text(aes(y = reorder(voto1, -count),x=count+10,label=paste(round(count,2))), size=4) +
+  ylab("Candidatos") +xlab("Intenções de votos") + 
+  coord_cartesian( xlim = c(0, 540), expand = FALSE) +
+  theme_classic(base_size = 15) +
+  theme(axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.text.y = element_text(""),
+        axis.text.y.right = element_text(color = "black"),
+        panel.background = element_blank(),
+        legend.position="none"); fig1
+
+ggsave("fig1.png",fig1, width=4, height=2.5, units="in", scale=3)
 ```
 
 Figura 1: Intenção de voto para cada candidato
-<iframe src="https://rpubs.com/guiaguilar/testtreeemap" frameborder="0" height="400" width="430"></iframe>
+<img src="fig1.png" alt="hi" class="inline"/>
 
+A Figura 1 apresenta os candidatos que possuem as maiores intenções de votos. Além deste gráfico apresentado, a mesma informação pode ser vista de uma forma mais interativa no gráfico presente em: https://rstudio-pubs-static.s3.amazonaws.com/761497_2be5b28bcb2a45a28aac7b0e99cb9b07.html
 
+### Gráfico da Intenção de voto e avaliação do governo
 No segundo gráfico temos os valores referentes ao cruzamento entre as variáveis intenção de voto e avaliação do governo. Para a criação do banco para esta análise foram retirados as observações onde o indivíduo não sabia ou não responde sobre a avaliação do governo, como pode ser visto no código abaixo. Em seguida foram criadas duas variáveis, uma representando as opiniões positivas e a outras as opiniões negativas.
 
 ```R
